@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Catalog>
+
+<h3>@ViewData["FolderName"]</h3>
+
+<ul style="list-style-type: none;">
+    @foreach (var folder in Model)
+    {
+        <li>
+            <a href="@Url.Action("ViewFolder", "Home", new {folderId = folder.Id})">@folder.Name</a>
+        </li>
+    }
+</ul>
+<p>
+    <a asp-controller="Catalog" asp-action="Start">Import New Catalog</a>
+</p>
+<p>
+    <a asp-controller="Catalog" asp-action="SaveCatalogJson" download="catalog.json">Save Catalog as JSON</a>
+</p>
